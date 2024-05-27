@@ -5,21 +5,22 @@ namespace JuiceIt2Content.Programming.Player.Scripts
 {
     public class PlayerEngine : MonoBehaviour
     {
-        [SerializeField] private int moveSpeed = 500;
+        [SerializeField, Header("Movement")] private int moveSpeed = 500;
         [SerializeField] private float acceleration = 0.3f;
         [SerializeField] private float deceleration = 0.3f;
-        [SerializeField] private float baseFireSpeed = 1;
-        [SerializeField] private float baseFirePower = 1;
+        [SerializeField, Space, Header("AutoShoot")] private float baseFireSpeed = 1;
+        [SerializeField] private float minDistance = 10;
         [SerializeField] private float autoShootRadiusDetection = 15;
         [SerializeField] private GameObject bullet;
 
         private Rigidbody _rb;
         private Vector2 _moveInputAxis;
+
         
-        float _autoShootTimer = 0;
         
+        private float _autoShootTimer;
         
-        private static float Score { get; set; }
+        private static float Score {get; set;}
 
         private void Awake()
         {
@@ -61,8 +62,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
             Vector3 lAxis = new Vector3(lAxisSpeed.x, _rb.linearVelocity.y, lAxisSpeed.y);
 
             Vector3 lNewVel = lAxis.magnitude != 0 ? Vector3.Lerp(_rb.linearVelocity,  lAxis, acceleration) : 
-                Vector3.Lerp(_rb.linearVelocity,  Vector3.zero, deceleration);
-
+                                                    Vector3.Lerp(_rb.linearVelocity,  Vector3.zero, deceleration);
             _rb.linearVelocity = lNewVel;
         }
 
@@ -75,22 +75,23 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         {
             Vector3 lCenter = transform.position;
             Collider[] lListOfEnnemy = Physics.OverlapSphere(lCenter, autoShootRadiusDetection, LayerMask.GetMask("Enemies"));
-
+            
             if (_autoShootTimer <= baseFireSpeed)
             {
                 _autoShootTimer += Time.deltaTime;
             }
             else
             {
-                Instantiate(bullet, transform.position, transform.rotation);
+                foreach (var enemyColliders in lListOfEnnemy)
+                {
+                    float lDistance = (enemyColliders.gameObject.transform.position - transform.position).magnitude;
+                    if (lDistance <= minDistance)
+                    {
+                        Instantiate(bullet, transform.position, transform.rotation);
+                    }
+                }
                 _autoShootTimer = 0;
             }
-            
-            
-            // foreach (var variable in lListOfEnnemy)
-            // {
-            //     
-            // }
         }
 
         private void OnDrawGizmos()

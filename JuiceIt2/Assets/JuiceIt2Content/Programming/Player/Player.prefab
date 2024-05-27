@@ -134,12 +134,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597a93c04afe89049ab7f97dc8019802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 600
+  moveSpeed: 300
   acceleration: 0.3
   deceleration: 0.3
   baseFireSpeed: 1
   baseFirePower: 1
-  autoShootRadiusDetection: 15
+  autoShootRadiusDetection: 10
   bullet: {fileID: 6092940822642138220, guid: 0af750f8d780fa64390f3c98297d0f13, type: 3}
 --- !u!65 &346005593118909025
 BoxCollider:

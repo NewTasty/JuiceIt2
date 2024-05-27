@@ -18,7 +18,8 @@ namespace JuiceIt2Content.Programming.UI
 
         private void Update()
         {
-            scorePoint.text = _playerRef.GetScore().ToString(CultureInfo.CurrentCulture);
+            if (!_playerRef) return;
+            scorePoint.SetText(_playerRef.GetScore().ToString(CultureInfo.CurrentCulture));
         }
     }
 }

@@ -20,8 +20,6 @@ MonoBehaviour:
   m_Scenes:
   - m_enabled: 1
     m_path: Assets/JuiceIt2Content/Levels/LVL_MainMenu.unity
-  - m_enabled: 1
-    m_path: Assets/JuiceIt2Content/Levels/LVL_Dev.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []
