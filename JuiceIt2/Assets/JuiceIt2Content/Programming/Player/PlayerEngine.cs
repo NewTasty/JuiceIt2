@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace JuiceIt2Content.Programming.Player
 {
@@ -10,11 +12,65 @@ namespace JuiceIt2Content.Programming.Player
         [SerializeField] private float baseFireSpeed = 1;
         [SerializeField] private float baseFirePower = 1;
 
-        private void Start()
+        private Rigidbody _rb;
+        private Vector2 _moveInputAxis;
+
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody>();
+        }
+
+        private void FixedUpdate()
+        {
+            MoveAction();
+        }
+
+        private void Update()
         {
             
         }
         
+        #region INPUTS
+
+        public void MoveInput(InputAction.CallbackContext pContext)
+        {
+            _moveInputAxis = pContext.ReadValue<Vector2>();
+        }
+
+        public void ActionInput(InputAction.CallbackContext pContext)
+        {
+            if (pContext.performed)
+            {
+                Action();
+            }
+        }
+
+        #endregion
         
+        #region ACTIONS
+
+        private void MoveAction()
+        {
+            Vector2 lAxisSpeed = _moveInputAxis * (moveSpeed * Time.fixedDeltaTime);
+            Vector3 lAxis = new Vector3(lAxisSpeed.x, 0, lAxisSpeed.y);
+
+            Vector3 lNewVel = lAxis.magnitude != 0 ? Vector3.Lerp(Vector3.zero,  lAxis, acceleration) : 
+                Vector3.Lerp(_rb.linearVelocity,  Vector3.zero, deceleration);
+
+            _rb.linearVelocity = lNewVel;
+        }
+
+        private void Action()
+        {
+            print("FireSpecial");
+        }
+
+        private void AutoShoot()
+        {
+            
+        }
+
+        #endregion
     }
+    
 }
