@@ -24,7 +24,9 @@ namespace JuiceIt2Content.Programming.Enemy
             Vector3 lPosition = new Vector3(transform.position.x, 1f, transform.position.z); 
             Vector3 lTargetPosition = new Vector3(_playerRef.position.x, 1f, _playerRef.position.z); 
             
-            transform.position = Vector3.MoveTowards(lPosition, lTargetPosition, speed/1000); 
+            transform.position = Vector3.MoveTowards(lPosition, lTargetPosition, speed/1000);
+
+            transform.LookAt(_playerRef.position);
         }
         
     }
