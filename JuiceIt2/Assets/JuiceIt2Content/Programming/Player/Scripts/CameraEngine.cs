@@ -1,7 +1,6 @@
-using JuiceIt2Content.Programming.Player.Scripts;
 using UnityEngine;
 
-namespace JuiceIt2Content.Programming.Player
+namespace JuiceIt2Content.Programming.Player.Scripts
 {
     public class CameraEngine : MonoBehaviour
     {
@@ -11,7 +10,6 @@ namespace JuiceIt2Content.Programming.Player
         private Transform _playerRef;
         private Vector3 _velocity;
         
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Start()
         {
             _playerRef = FindFirstObjectByType<PlayerEngine>().transform;

@@ -15,6 +15,10 @@ namespace JuiceIt2Content.Programming.Player.Scripts
 
         private Rigidbody _rb;
         private Vector2 _moveInputAxis;
+        
+        float _autoShootTimer = 0;
+        
+        
         private static float Score { get; set; }
 
         private void Awake()
@@ -72,19 +76,21 @@ namespace JuiceIt2Content.Programming.Player.Scripts
             Vector3 lCenter = transform.position;
             Collider[] lListOfEnnemy = Physics.OverlapSphere(lCenter, autoShootRadiusDetection, LayerMask.GetMask("Enemies"));
 
-            float lTimer = 0;
-
-            if (lTimer >= baseFireSpeed)
+            if (_autoShootTimer <= baseFireSpeed)
             {
-                lTimer += Time.deltaTime;
-                print(lTimer);
+                _autoShootTimer += Time.deltaTime;
             }
-            else lTimer = 0;
-            
-            foreach (var variable in lListOfEnnemy)
+            else
             {
                 Instantiate(bullet, transform.position, transform.rotation);
+                _autoShootTimer = 0;
             }
+            
+            
+            // foreach (var variable in lListOfEnnemy)
+            // {
+            //     
+            // }
         }
 
         private void OnDrawGizmos()
