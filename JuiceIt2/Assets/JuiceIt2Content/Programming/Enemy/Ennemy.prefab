@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5226243467513736698}
   - component: {fileID: 9206878737971736671}
   - component: {fileID: 7518206617556273816}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Ennemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,9 +98,9 @@ GameObject:
   - component: {fileID: 1489864821897531953}
   - component: {fileID: 9176917936867595397}
   - component: {fileID: 231723209948870981}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ennemy
-  m_TagString: Untagged
+  m_TagString: Ennemies
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

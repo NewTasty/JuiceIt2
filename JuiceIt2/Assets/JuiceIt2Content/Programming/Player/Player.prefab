@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4183485731080647313}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,6 +139,8 @@ MonoBehaviour:
   deceleration: 0.3
   baseFireSpeed: 1
   baseFirePower: 1
+  autoShootRadiusDetection: 15
+  bullet: {fileID: 6092940822642138220, guid: 0af750f8d780fa64390f3c98297d0f13, type: 3}
 --- !u!65 &346005593118909025
 BoxCollider:
   m_ObjectHideFlags: 0

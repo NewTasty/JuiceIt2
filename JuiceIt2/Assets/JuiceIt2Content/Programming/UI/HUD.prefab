@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4111318495128008090}
   - component: {fileID: 3349479844107150909}
   m_Layer: 5
-  m_Name: '[Text] ScorePoints'
+  m_Name: '[Text] Score'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 3342715447225841229}
   - component: {fileID: 3076183654117498435}
   m_Layer: 5
-  m_Name: '[Text] Score'
+  m_Name: '[Text] ScorePoints'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -361,6 +361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5373506617860041840}
+  - component: {fileID: 1023652743905221140}
   - component: {fileID: 4275110561039183973}
   - component: {fileID: 4625382114312039772}
   - component: {fileID: 5241651743539205847}
@@ -393,6 +394,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1023652743905221140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9009649804617710210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadc86adebdb49dcb958b6605052ab2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePoint: {fileID: 3076183654117498435}
 --- !u!223 &4275110561039183973
 Canvas:
   m_ObjectHideFlags: 0
@@ -404,7 +418,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 0}
-  m_PlaneDistance: 10
+  m_PlaneDistance: 13
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
