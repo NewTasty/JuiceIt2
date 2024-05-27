@@ -1,16 +1,15 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+namespace JuiceIt2Content.Programming.Player.Scripts
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class Bullet : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private float damage = 5;
 
-    // Update is called once per frame
-    void Update()
-    {
+        private void OnCollisionEnter(Collision other)
+        {
+            Destroy(other.gameObject);
+        }
         
     }
 }

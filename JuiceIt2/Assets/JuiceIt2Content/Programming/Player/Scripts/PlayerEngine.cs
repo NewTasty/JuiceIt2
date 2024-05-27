@@ -11,6 +11,7 @@ namespace JuiceIt2Content.Programming.Player
         [SerializeField] private float deceleration = 0.3f;
         [SerializeField] private float baseFireSpeed = 1;
         [SerializeField] private float baseFirePower = 1;
+        [SerializeField] private float autoShootRadiusDetection = 5;
 
         private Rigidbody _rb;
         private Vector2 _moveInputAxis;
@@ -23,11 +24,6 @@ namespace JuiceIt2Content.Programming.Player
         private void FixedUpdate()
         {
             MoveAction();
-        }
-
-        private void Update()
-        {
-            
         }
         
         #region INPUTS
@@ -67,7 +63,9 @@ namespace JuiceIt2Content.Programming.Player
 
         private void AutoShoot()
         {
-            
+            Vector3 lCenter = transform.position;
+
+            Collider[] lListOfEnnemy = Physics.OverlapSphere(lCenter, autoShootRadiusDetection, LayerMask.GetMask("Ennemies"));
         }
 
         #endregion
