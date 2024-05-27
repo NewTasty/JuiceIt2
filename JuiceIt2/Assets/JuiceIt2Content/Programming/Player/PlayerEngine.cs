@@ -52,9 +52,9 @@ namespace JuiceIt2Content.Programming.Player
         private void MoveAction()
         {
             Vector2 lAxisSpeed = _moveInputAxis * (moveSpeed * Time.fixedDeltaTime);
-            Vector3 lAxis = new Vector3(lAxisSpeed.x, 0, lAxisSpeed.y);
+            Vector3 lAxis = new Vector3(lAxisSpeed.x, _rb.linearVelocity.y, lAxisSpeed.y);
 
-            Vector3 lNewVel = lAxis.magnitude != 0 ? Vector3.Lerp(Vector3.zero,  lAxis, acceleration) : 
+            Vector3 lNewVel = lAxis.magnitude != 0 ? Vector3.Lerp(_rb.linearVelocity,  lAxis, acceleration) : 
                 Vector3.Lerp(_rb.linearVelocity,  Vector3.zero, deceleration);
 
             _rb.linearVelocity = lNewVel;
