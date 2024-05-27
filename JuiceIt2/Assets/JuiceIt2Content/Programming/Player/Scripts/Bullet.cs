@@ -10,15 +10,22 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         [SerializeField] private float lifeSpan = 4;
 
         private PlayerEngine _player;
+        private Rigidbody _rb;
         
         private void Awake()
         {
             Destroy(gameObject, lifeSpan);
+            _rb = GetComponent<Rigidbody>();
         }
 
         private void Start()
         {
             _player = FindFirstObjectByType<PlayerEngine>();
+        }
+
+        private void FixedUpdate()
+        {
+            _rb.linearVelocity = transform.forward * speed;
         }
 
         private void OnTriggerEnter(Collider other)

@@ -87,7 +87,9 @@ namespace JuiceIt2Content.Programming.Player.Scripts
                     float lDistance = (enemyColliders.gameObject.transform.position - transform.position).magnitude;
                     if (lDistance <= minDistance)
                     {
-                        Instantiate(bullet, transform.position, transform.rotation);
+                        Quaternion lRotation =
+                            Quaternion.LookRotation(enemyColliders.transform.forward);
+                        Instantiate(bullet, transform.position, lRotation);
                     }
                 }
                 _autoShootTimer = 0;
