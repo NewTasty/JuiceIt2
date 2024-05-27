@@ -1,16 +1,20 @@
 using UnityEngine;
 
-public class PlayerEngine : MonoBehaviour
+namespace JuiceIt2Content.Programming.Player
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class PlayerEngine : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private int moveSpeed = 500;
+        [SerializeField] private float acceleration = 0.3f;
+        [SerializeField] private float deceleration = 0.3f;
+        [SerializeField] private float baseFireSpeed = 1;
+        [SerializeField] private float baseFirePower = 1;
 
-    // Update is called once per frame
-    void Update()
-    {
+        private void Start()
+        {
+            
+        }
+        
         
     }
 }
