@@ -8,7 +8,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         [SerializeField, Header("Movement")] private int moveSpeed = 500;
         [SerializeField] private float acceleration = 0.3f;
         [SerializeField] private float deceleration = 0.3f;
-        [SerializeField, Space, Header("AutoShoot")] private float baseFireSpeed = 1;
+        [SerializeField, Space, Header("AutoShoot")] private float bulletSpawnTime = 1;
         [SerializeField] private float minDistance = 10;
         [SerializeField] private float autoShootRadiusDetection = 15;
         [SerializeField] private GameObject bullet;
@@ -76,7 +76,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
             Vector3 lCenter = transform.position;
             Collider[] lListOfEnnemy = Physics.OverlapSphere(lCenter, autoShootRadiusDetection, LayerMask.GetMask("Enemies"));
             
-            if (_autoShootTimer <= baseFireSpeed)
+            if (_autoShootTimer <= bulletSpawnTime)
             {
                 _autoShootTimer += Time.deltaTime;
             }
@@ -85,24 +85,19 @@ namespace JuiceIt2Content.Programming.Player.Scripts
                 foreach (var enemyColliders in lListOfEnnemy)
                 {
                     float lDistance = (enemyColliders.gameObject.transform.position - transform.position).magnitude;
-                    if (lDistance <= minDistance)
-                    {
-                        Quaternion lRotation =
-                            Quaternion.LookRotation(enemyColliders.transform.forward);
-                        Instantiate(bullet, transform.position, lRotation);
-                    }
+                    if (!(lDistance <= minDistance)) continue;
+                    
+                    Quaternion lRotation = Quaternion.LookRotation(enemyColliders.gameObject.transform.forward * -1);
+                    Instantiate(bullet, transform.position, lRotation);
+                    break;
                 }
                 _autoShootTimer = 0;
             }
         }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(transform.position, autoShootRadiusDetection);
-        }
-
         #endregion
-        
+
+        #region SCORING
+
         public void UpdateScore(float pValue)
         {
             Score += pValue;
@@ -112,6 +107,16 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         {
             return Score;
         }
+
+        #endregion
+        
+        
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(transform.position, autoShootRadiusDetection);
+        }
+#endif
     }
     
 }
