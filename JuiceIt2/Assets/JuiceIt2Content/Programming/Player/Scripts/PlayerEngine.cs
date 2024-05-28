@@ -87,18 +87,18 @@ namespace JuiceIt2Content.Programming.Player.Scripts
                 {
                     float lDistance = (enemyColliders.gameObject.transform.position - transform.position).magnitude;
                     if (!(lDistance <= minDistance)) continue;
+                    
+                    Quaternion lRotation = Quaternion.LookRotation(enemyColliders.gameObject.transform.forward * -1);
+                    Instantiate(bullet, transform.position, lRotation);
+                    break;
                 }
                 _autoShootTimer = 0;
             }
         }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(transform.position, autoShootRadiusDetection);
-        }
-
         #endregion
-        
+
+        #region SCORING
+
         public void UpdateScore(float pValue)
         {
             Score += pValue;
@@ -108,6 +108,16 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         {
             return Score;
         }
+
+        #endregion
+        
+        
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(transform.position, autoShootRadiusDetection);
+        }
+#endif
     }
     
 }
