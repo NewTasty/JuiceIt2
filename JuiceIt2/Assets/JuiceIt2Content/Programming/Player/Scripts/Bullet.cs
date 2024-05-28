@@ -7,11 +7,17 @@ namespace JuiceIt2Content.Programming.Player.Scripts
     {
         [SerializeField] private float speed = 0.5f;
         [SerializeField] private float lifeSpan = 4;
-        [SerializeField] private GameObject wallHitEffect;
-        [SerializeField] private GameObject enemyHitEffect;
+        [SerializeField] private GameObject HitEffect;
+        [SerializeField] private Transform firstEffectAnchor;
+        [SerializeField] private Transform secondEffectAnchor;
+        [SerializeField] private GameObject trailEffect;
+        [SerializeField] private GameObject moveEffect;
 
         private PlayerEngine _player;
         private Rigidbody _rb;
+
+        private GameObject _moveEffectRef;
+        private GameObject _trailEffectRef;
         
         private void Awake()
         {
@@ -22,6 +28,9 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         private void Start()
         {
             _player = FindFirstObjectByType<PlayerEngine>();
+            
+            _moveEffectRef = Instantiate(moveEffect, firstEffectAnchor.position, transform.rotation, firstEffectAnchor);
+            _trailEffectRef = Instantiate(trailEffect, secondEffectAnchor.position, transform.rotation, secondEffectAnchor);
         }
 
         private void FixedUpdate()
@@ -33,9 +42,9 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Environment"))
             {
-                if (wallHitEffect)
+                if (HitEffect)
                 {
-                    Instantiate(wallHitEffect);
+                    Instantiate(HitEffect);
                 }
                 Destroy(gameObject);
             }else if (other.GetComponent<EnemyBasic>())
@@ -46,10 +55,9 @@ namespace JuiceIt2Content.Programming.Player.Scripts
 
         void OnEnemyHitEffect(Collider other)
         {
-            _player.UpdateScore(10);
-            if (enemyHitEffect)
+            if (HitEffect)
             {
-                Instantiate(enemyHitEffect);
+                Instantiate(HitEffect);
             }
             Destroy(other.gameObject);
             Destroy(gameObject);
