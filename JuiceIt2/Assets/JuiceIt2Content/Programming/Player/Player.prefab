@@ -137,8 +137,8 @@ MonoBehaviour:
   moveSpeed: 300
   acceleration: 0.3
   deceleration: 0.3
-  baseFireSpeed: 1
-  baseFirePower: 1
+  bulletSpawnTime: 1
+  minDistance: 10
   autoShootRadiusDetection: 10
   bullet: {fileID: 6092940822642138220, guid: 0af750f8d780fa64390f3c98297d0f13, type: 3}
 --- !u!65 &346005593118909025
@@ -187,7 +187,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!114 &4183485731080647313
 MonoBehaviour:
