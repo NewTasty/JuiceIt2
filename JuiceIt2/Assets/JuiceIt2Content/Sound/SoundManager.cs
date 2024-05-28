@@ -20,6 +20,6 @@ public class SoundManager : MonoBehaviour
         newSource.volume = Random.Range(newScriptable.minVolume, newScriptable.maxVolume);
         newSource.pitch = Random.Range(newScriptable.minPitch, newScriptable.maxPitch);
         newSource.Play();
-        GameObject.Destroy(newObject, 3);
+        GameObject.Destroy(newObject, newSource.clip.length+1);
     }
 }
