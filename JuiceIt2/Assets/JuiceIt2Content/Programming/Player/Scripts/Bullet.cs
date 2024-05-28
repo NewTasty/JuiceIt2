@@ -7,6 +7,8 @@ namespace JuiceIt2Content.Programming.Player.Scripts
     {
         [SerializeField] private float speed = 0.5f;
         [SerializeField] private float lifeSpan = 4;
+        [SerializeField] private GameObject wallHitEffect;
+        [SerializeField] private GameObject enemyHitEffect;
 
         private PlayerEngine _player;
         private Rigidbody _rb;
@@ -29,12 +31,28 @@ namespace JuiceIt2Content.Programming.Player.Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.GetComponent<EnemyBasic>()) return;
-            print("EnemyHit");
+            if (other.gameObject.layer == LayerMask.NameToLayer("Environment"))
+            {
+                if (wallHitEffect)
+                {
+                    Instantiate(wallHitEffect);
+                }
+                Destroy(gameObject);
+            }else if (other.GetComponent<EnemyBasic>())
+            {
+                OnEnemyHitEffect(other);
+            }
+        }
+
+        void OnEnemyHitEffect(Collider other)
+        {
             _player.UpdateScore(10);
+            if (enemyHitEffect)
+            {
+                Instantiate(enemyHitEffect);
+            }
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
-        
     }
 }
