@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace JuiceIt2Content.Programming.Player.Scripts
 {
@@ -8,7 +9,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         [SerializeField, Header("Movement")] private int moveSpeed = 500;
         [SerializeField] private float acceleration = 0.3f;
         [SerializeField] private float deceleration = 0.3f;
-        [SerializeField, Space, Header("AutoShoot")] private float baseFireSpeed = 1;
+        [SerializeField, Space, Header("AutoShoot")] private float bulletSpawnTime = 1;
         [SerializeField] private float minDistance = 10;
         [SerializeField] private float autoShootRadiusDetection = 15;
         [SerializeField] private GameObject bullet;
@@ -76,7 +77,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
             Vector3 lCenter = transform.position;
             Collider[] lListOfEnnemy = Physics.OverlapSphere(lCenter, autoShootRadiusDetection, LayerMask.GetMask("Enemies"));
             
-            if (_autoShootTimer <= baseFireSpeed)
+            if (_autoShootTimer <= bulletSpawnTime)
             {
                 _autoShootTimer += Time.deltaTime;
             }
@@ -85,12 +86,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
                 foreach (var enemyColliders in lListOfEnnemy)
                 {
                     float lDistance = (enemyColliders.gameObject.transform.position - transform.position).magnitude;
-                    if (lDistance <= minDistance)
-                    {
-                        Quaternion lRotation =
-                            Quaternion.LookRotation(enemyColliders.transform.forward);
-                        Instantiate(bullet, transform.position, lRotation);
-                    }
+                    if (!(lDistance <= minDistance)) continue;
                 }
                 _autoShootTimer = 0;
             }
