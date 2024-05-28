@@ -49,6 +49,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85cce702389edb54191c4f6c1e2de381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xpToGive: 10
+  speed: 10
+  fxOnCollect: {fileID: 0}
+  isAttractedEverywhere: 0
+  attractedRadius: 10
 --- !u!33 &2703122783071590074
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -80,7 +85,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 642a04fdb6fbf674ca4b2455e4814050, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,7 +150,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
