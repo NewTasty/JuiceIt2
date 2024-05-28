@@ -9922,6 +9922,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   lifeSpan: 3
+  HitEffect: {fileID: 6090773920317634552, guid: 9c07ad5b08914da48bf8936672056e69, type: 3}
+  firstEffectAnchor: {fileID: 0}
+  secondEffectAnchor: {fileID: 0}
+  trailEffect: {fileID: 0}
+  moveEffect: {fileID: 0}
 --- !u!65 &7063606916549572032
 BoxCollider:
   m_ObjectHideFlags: 0
