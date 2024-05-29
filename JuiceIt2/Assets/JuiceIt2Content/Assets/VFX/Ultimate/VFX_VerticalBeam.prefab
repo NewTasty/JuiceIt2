@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7177974301263503781}
   - component: {fileID: 8069815865764173524}
   - component: {fileID: 4104759414479071938}
+  - component: {fileID: 2366438997660282960}
   m_Layer: 0
   m_Name: VFX_VerticalBeam
   m_TagString: Untagged
@@ -114,3 +115,15 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2366438997660282960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110054411802827156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd047863073db64a86f2346ad27926e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
