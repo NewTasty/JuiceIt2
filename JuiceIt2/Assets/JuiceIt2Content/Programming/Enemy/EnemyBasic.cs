@@ -40,7 +40,8 @@ namespace JuiceIt2Content.Programming.Enemy
         {
             if (deathFX)
             {
-                Instantiate(deathFX);
+                Quaternion lRotation = Quaternion.LookRotation(-transform.forward);
+                Instantiate(deathFX, transform.position, lRotation);
             }
             
             int lRandom = (int)Random.Range(rewardNumber.x, rewardNumber.y);
@@ -48,7 +49,10 @@ namespace JuiceIt2Content.Programming.Enemy
             {
                 if (rewardObject)
                 {
-                    Instantiate(rewardObject, transform.position, transform.rotation);
+                    float lRadius = 0.5f;
+                    Vector3 lCircleSpawn = new Vector3(transform.position.x + Random.insideUnitCircle.x * lRadius, 0.5f, 
+                                                       transform.position.z + Random.insideUnitCircle.y * lRadius);
+                    Instantiate(rewardObject, lCircleSpawn, transform.rotation);
                 }
             }
         }
