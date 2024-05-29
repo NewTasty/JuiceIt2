@@ -5,7 +5,7 @@ namespace JuiceIt2Content.Programming.Collectable
 {
     public class Collectable : MonoBehaviour
     {
-        [SerializeField] private float _xpToGive = 10;
+        [SerializeField] private float xpToGive = 10;
         [SerializeField] private float speed = 10;
         [SerializeField] private GameObject fxOnCollect;
         [SerializeField] private bool isAttractedEverywhere; 
@@ -13,7 +13,7 @@ namespace JuiceIt2Content.Programming.Collectable
 
         private Transform _playerRef;
     
-        private void Awake()
+        private void Start()
         {
             _playerRef = FindFirstObjectByType<PlayerEngine>().transform;
         }
@@ -27,27 +27,16 @@ namespace JuiceIt2Content.Programming.Collectable
         {
             if (isAttractedEverywhere)
             {
-                lOnMovement();
+                OnMovement();
             }
             else
             {
                 float lDstanceWithPlayer = Vector3.Distance(transform.position, _playerRef.position);
-                 print(lDstanceWithPlayer);
                 if (lDstanceWithPlayer <= attractedRadius)
                 {
                     speed += Time.deltaTime * 16;
-                    lOnMovement();
+                    OnMovement();
                 }
-            }
-            
-            void lOnMovement()
-            {
-                Vector3 lPosition = new Vector3(transform.position.x, 1f, transform.position.z); 
-                Vector3 lTargetPosition = new Vector3(_playerRef.position.x, 1f, _playerRef.position.z);
-                
-                transform.position = Vector3.MoveTowards(lPosition, lTargetPosition, speed/1000);
-            
-                transform.LookAt(_playerRef.position);
             }
         }
 
@@ -55,12 +44,22 @@ namespace JuiceIt2Content.Programming.Collectable
         {
             if (!other.GetComponent<PlayerEngine>()) return;
             
-            _playerRef.GetComponent<PlayerEngine>().UpdateScore(_xpToGive);
+            _playerRef.GetComponent<PlayerEngine>().UpdateScore(xpToGive);
             if (fxOnCollect)
             {
                 Instantiate(fxOnCollect, transform.position, transform.rotation);
             }
             Destroy(gameObject);
+        }
+        
+        private void OnMovement()
+        {
+            Vector3 lPosition = new Vector3(transform.position.x, 1f, transform.position.z); 
+            Vector3 lTargetPosition = new Vector3(_playerRef.position.x, 1f, _playerRef.position.z);
+                
+            transform.position = Vector3.MoveTowards(lPosition, lTargetPosition, speed/1000);
+            
+            transform.LookAt(_playerRef.position);
         }
     }
 }
