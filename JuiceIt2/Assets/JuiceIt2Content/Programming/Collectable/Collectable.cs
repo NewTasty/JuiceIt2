@@ -19,7 +19,6 @@ namespace JuiceIt2Content.Programming.Collectable
         {
             float lRandomScale = Random.Range(0.2f, 0.7f);
             transform.localScale = new Vector3(lRandomScale, lRandomScale, lRandomScale);
-            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(4);
         }
 
         private void Start()
@@ -58,6 +57,7 @@ namespace JuiceIt2Content.Programming.Collectable
             {
                 Instantiate(fxOnCollect, transform.position, transform.rotation);
             }
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(4);
             Destroy(gameObject);
         }
         
