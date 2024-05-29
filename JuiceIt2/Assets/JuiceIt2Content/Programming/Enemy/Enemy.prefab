@@ -162,7 +162,7 @@ MonoBehaviour:
   speed: 10
   rewardNumber: {x: 1, y: 5}
   rewardObject: {fileID: 8260289429319462762, guid: c5a5b0eadb8f26643a91975d12a119cf, type: 3}
-  deathFX: {fileID: 3622517421067807498, guid: c099586a9c6d2e946a737987351c8296, type: 3}
+  deathFX: {fileID: 573310264052072629, guid: 73c5db28487907e43961154bd85e00cb, type: 3}
   onDeath:
     m_PersistentCalls:
       m_Calls:

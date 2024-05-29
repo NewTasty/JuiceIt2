@@ -40,8 +40,8 @@ namespace JuiceIt2Content.Programming.Enemy
         {
             if (deathFX)
             {
-                
-                Instantiate(deathFX, transform.position, Quaternion.Inverse(transform.rotation));
+                Quaternion lRotation = Quaternion.LookRotation(-transform.forward);
+                Instantiate(deathFX, transform.position, lRotation);
             }
             
             int lRandom = (int)Random.Range(rewardNumber.x, rewardNumber.y);
