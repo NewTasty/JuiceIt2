@@ -5087,9 +5087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   lifeSpan: 3
-  HitEffect: {fileID: 3622517421067807498, guid: c099586a9c6d2e946a737987351c8296, type: 3}
-  trailEffect: {fileID: 0}
-  moveEffect: {fileID: 0}
+  hitEffect: {fileID: 0}
 --- !u!65 &7063606916549572032
 BoxCollider:
   m_ObjectHideFlags: 0

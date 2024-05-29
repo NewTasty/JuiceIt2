@@ -2323,14 +2323,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 961739752}
-    - target: {fileID: 8977335590056442779, guid: a6d0bbc215840c943a3f384cf464de4c, type: 3}
-      propertyPath: explosionEffects.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977335590056442779, guid: a6d0bbc215840c943a3f384cf464de4c, type: 3}
-      propertyPath: 'explosionEffects.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8057502814347332989, guid: b7122044b6a909e468995921166e5021, type: 3}
     - target: {fileID: 9050093776009290563, guid: a6d0bbc215840c943a3f384cf464de4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
