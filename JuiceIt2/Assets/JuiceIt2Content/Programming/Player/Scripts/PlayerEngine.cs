@@ -74,8 +74,17 @@ namespace JuiceIt2Content.Programming.Player.Scripts
 
         private void Action()
         {
-            print("FireSpecial");
-            StartCoroutine(ExplosionPropagation(transform.position));
+            Collider[] lEnnemies = Physics.OverlapSphere(transform.position, 10);
+                
+            foreach (var lEnnemyEntity in lEnnemies)
+            {
+                if (lEnnemyEntity.gameObject.layer == LayerMask.NameToLayer("Enemies"))
+                {
+                    Destroy(lEnnemyEntity);
+                }
+            }
+            
+            //StartCoroutine(ExplosionPropagation(transform.position));
         }
 
         IEnumerator ExplosionPropagation(Vector3 pOrigin)
@@ -84,15 +93,13 @@ namespace JuiceIt2Content.Programming.Player.Scripts
             {
                 Instantiate(lEffect, transform.position, transform.rotation);
             }
-            float radius = 0f;
+            float radius = 10f;
             Vector3 lPreviousPosition = pOrigin;
             
             while (radius < maxExplosionRadius)
             {
-                radius += propagationSpeed * Time.deltaTime;
+                //radius += propagationSpeed * Time.deltaTime;
                 Collider[] lEnnemies = Physics.OverlapSphere(lPreviousPosition, radius);
-                
-                print(lPreviousPosition);
                 
                 foreach (var lEnnemyEntity in lEnnemies)
                 {

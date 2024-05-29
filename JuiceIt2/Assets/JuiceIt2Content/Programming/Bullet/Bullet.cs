@@ -45,7 +45,6 @@ namespace JuiceIt2Content.Programming.Bullet
                 Instantiate(hitEffect, transform.position, transform.rotation);
             }
             other.GetComponent<EnemyBasic>().onDeath.Invoke();
-            Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }
