@@ -1,8 +1,6 @@
-using System.Collections;
 using JuiceIt2Content.Programming.Enemy;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace JuiceIt2Content.Programming.Player.Scripts
 {
@@ -23,7 +21,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         private Rigidbody _rb;
         private Vector2 _moveInputAxis;
 
-        
+        private SoundManager _soundManager;
         
         private float _autoShootTimer;
         
@@ -32,6 +30,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
+            _soundManager = FindFirstObjectByType<SoundManager>();
         }
 
         private void FixedUpdate()
@@ -75,13 +74,14 @@ namespace JuiceIt2Content.Programming.Player.Scripts
 
         private void Action()
         {
+            
             foreach (var lEffect in explosionEffects)
             {
                 Instantiate(lEffect, transform.position, transform.rotation);
-                GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(5);
+                _soundManager.SoundInstantiate(5);
             }
             
-            Collider[] lEnnemies = Physics.OverlapSphere(transform.position, 10);
+            Collider[] lEnnemies = Physics.OverlapSphere(transform.position, maxExplosionRadius);
                 
             foreach (var lEnnemyEntity in lEnnemies)
             {
@@ -90,34 +90,6 @@ namespace JuiceIt2Content.Programming.Player.Scripts
                     lEnnemyEntity.gameObject.GetComponent<EnemyBasic>().onDeath.Invoke();
                 }
             }
-            
-            //StartCoroutine(ExplosionPropagation(transform.position));
-        }
-
-        IEnumerator ExplosionPropagation(Vector3 pOrigin)
-        {
-            foreach (var lEffect in explosionEffects)
-            {
-                Instantiate(lEffect, transform.position, transform.rotation);
-            }
-            float radius = 10f;
-            Vector3 lPreviousPosition = pOrigin;
-            
-            while (radius < maxExplosionRadius)
-            {
-                //radius += propagationSpeed * Time.deltaTime;
-                Collider[] lEnnemies = Physics.OverlapSphere(lPreviousPosition, radius);
-                
-                foreach (var lEnnemyEntity in lEnnemies)
-                {
-                    if (lEnnemyEntity.gameObject.layer == LayerMask.NameToLayer("Enemies"))
-                    {
-                        Destroy(lEnnemyEntity);
-                    }
-                }
-                yield return null;
-            }
-            yield return new WaitForSeconds(0.3f);
         }
         
         private void AutoShoot()

@@ -1,5 +1,6 @@
 using JuiceIt2Content.Programming.Player.Scripts;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
@@ -14,11 +15,19 @@ namespace JuiceIt2Content.Programming.Enemy
 
         private Transform _playerRef;
 
+        private NavMeshAgent _nvm;
+
         public UnityEvent onDeath;
-    
+
+        private void Awake()
+        {
+            _nvm = GetComponent<NavMeshAgent>();
+        }
+
         private void Start()
         {
             _playerRef = FindFirstObjectByType<PlayerEngine>().transform;
+            _nvm.speed = speed;
         }
 
         private void Update()
@@ -28,12 +37,14 @@ namespace JuiceIt2Content.Programming.Enemy
 
         private void Move()
         {
-            Vector3 lPosition = new Vector3(transform.position.x, 1f, transform.position.z); 
-            Vector3 lTargetPosition = new Vector3(_playerRef.position.x, 1f, _playerRef.position.z); 
+            _nvm.destination = _playerRef.position;
             
-            transform.position = Vector3.MoveTowards(lPosition, lTargetPosition, speed/1000);
+            // Vector3 lPosition = new Vector3(transform.position.x, 1f, transform.position.z); 
+            // Vector3 lTargetPosition = new Vector3(_playerRef.position.x, 1f, _playerRef.position.z); 
+            //
+            // transform.position = Vector3.MoveTowards(lPosition, lTargetPosition, speed/1000);
 
-            transform.LookAt(_playerRef.position);
+            // transform.LookAt(_playerRef.position);
         }
 
         public void SpawnCollectable()
