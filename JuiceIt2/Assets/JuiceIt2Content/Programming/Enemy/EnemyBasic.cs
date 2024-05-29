@@ -1,5 +1,6 @@
 using JuiceIt2Content.Programming.Player.Scripts;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace JuiceIt2Content.Programming.Enemy
@@ -7,13 +8,15 @@ namespace JuiceIt2Content.Programming.Enemy
     public class EnemyBasic : MonoBehaviour
     {
         [SerializeField] private float speed = 10;
-        [SerializeField] private Vector2 rewardNumber = new Vector2(1, 5);
+        [SerializeField] private Vector2 rewardNumber = new (1, 5);
         [SerializeField] private GameObject rewardObject;
         [SerializeField] private GameObject deathFX;
 
         private Transform _playerRef;
+
+        public UnityEvent onDeath;
     
-        private void Awake()
+        private void Start()
         {
             _playerRef = FindFirstObjectByType<PlayerEngine>().transform;
         }
@@ -33,14 +36,13 @@ namespace JuiceIt2Content.Programming.Enemy
             transform.LookAt(_playerRef.position);
         }
 
-        private void OnDestroy()
+        public void SpawnCollectable()
         {
             if (deathFX)
             {
                 Instantiate(deathFX);
             }
             
-            //Collectable
             int lRandom = (int)Random.Range(rewardNumber.x, rewardNumber.y);
             for (int i = 0; i < lRandom; i++)
             {
@@ -49,7 +51,6 @@ namespace JuiceIt2Content.Programming.Enemy
                     Instantiate(rewardObject, transform.position, transform.rotation);
                 }
             }
-            
         }
     }
 }
