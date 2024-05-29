@@ -1,7 +1,7 @@
 using JuiceIt2Content.Programming.Enemy;
 using UnityEngine;
 
-namespace JuiceIt2Content.Programming.Player.Scripts
+namespace JuiceIt2Content.Programming.Bullet
 {
     public class Bullet : MonoBehaviour
     {
