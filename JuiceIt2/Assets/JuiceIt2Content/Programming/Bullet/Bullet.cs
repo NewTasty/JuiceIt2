@@ -36,6 +36,7 @@ namespace JuiceIt2Content.Programming.Bullet
             {
                 OnEnemyHitEffect(other);
             }
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(1);
         }
 
         private void OnEnemyHitEffect(Collider other)
