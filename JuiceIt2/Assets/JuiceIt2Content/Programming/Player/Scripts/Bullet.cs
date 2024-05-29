@@ -23,6 +23,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         {
             Destroy(gameObject, lifeSpan);
             _rb = GetComponent<Rigidbody>();
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(0);
         }
 
         private void Start()
