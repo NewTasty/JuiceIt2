@@ -148,6 +148,7 @@ MonoBehaviour:
   effectDuration: 2
   explosionEffects:
   - {fileID: 2110054411802827156, guid: a48443c3d425f0f48b5961751598d529, type: 3}
+  - {fileID: 3123075737211501182, guid: a3f72d5f213bb7d458dfc2c4369e7acf, type: 3}
 --- !u!65 &346005593118909025
 BoxCollider:
   m_ObjectHideFlags: 0
