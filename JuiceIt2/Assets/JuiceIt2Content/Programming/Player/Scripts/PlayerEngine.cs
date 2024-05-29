@@ -78,6 +78,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
             foreach (var lEffect in explosionEffects)
             {
                 Instantiate(lEffect, transform.position, transform.rotation);
+                GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(5);
             }
             
             Collider[] lEnnemies = Physics.OverlapSphere(transform.position, 10);
