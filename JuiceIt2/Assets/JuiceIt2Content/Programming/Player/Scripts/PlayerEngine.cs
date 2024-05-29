@@ -1,4 +1,5 @@
 using System.Collections;
+using JuiceIt2Content.Programming.Enemy;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -74,13 +75,18 @@ namespace JuiceIt2Content.Programming.Player.Scripts
 
         private void Action()
         {
+            foreach (var lEffect in explosionEffects)
+            {
+                Instantiate(lEffect, transform.position, transform.rotation);
+            }
+            
             Collider[] lEnnemies = Physics.OverlapSphere(transform.position, 10);
                 
             foreach (var lEnnemyEntity in lEnnemies)
             {
                 if (lEnnemyEntity.gameObject.layer == LayerMask.NameToLayer("Enemies"))
                 {
-                    Destroy(lEnnemyEntity);
+                    lEnnemyEntity.gameObject.GetComponent<EnemyBasic>().onDeath.Invoke();
                 }
             }
             
