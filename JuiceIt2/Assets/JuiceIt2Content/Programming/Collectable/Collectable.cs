@@ -5,7 +5,7 @@ namespace JuiceIt2Content.Programming.Collectable
 {
     public class Collectable : MonoBehaviour
     {
-        [SerializeField] private float xpToGive = 10;
+        [SerializeField] private float _xpToGive = 10;
         [SerializeField] private float speed = 10;
         [SerializeField] private GameObject fxOnCollect;
         [SerializeField] private bool isAttractedEverywhere; 
@@ -55,7 +55,7 @@ namespace JuiceIt2Content.Programming.Collectable
         {
             if (!other.GetComponent<PlayerEngine>()) return;
             
-            _playerRef.GetComponent<PlayerEngine>().UpdateScore(xpToGive);
+            _playerRef.GetComponent<PlayerEngine>().UpdateScore(_xpToGive);
             if (fxOnCollect)
             {
                 Instantiate(fxOnCollect, transform.position, transform.rotation);

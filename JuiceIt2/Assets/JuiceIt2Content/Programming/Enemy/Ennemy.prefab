@@ -162,7 +162,7 @@ MonoBehaviour:
   speed: 10
   rewardNumber: {x: 1, y: 5}
   rewardObject: {fileID: 8260289429319462762, guid: c5a5b0eadb8f26643a91975d12a119cf, type: 3}
-  deathFX: {fileID: 6414825715766418841, guid: baf9b3cbc1b6f6b43b56f9385a79686f, type: 3}
+  deathFX: {fileID: 3622517421067807498, guid: c099586a9c6d2e946a737987351c8296, type: 3}
 --- !u!65 &9176917936867595397
 BoxCollider:
   m_ObjectHideFlags: 0
