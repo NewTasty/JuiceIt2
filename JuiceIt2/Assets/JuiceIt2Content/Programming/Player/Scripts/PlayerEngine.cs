@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace JuiceIt2Content.Programming.Player.Scripts
 {
@@ -12,7 +14,11 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         [SerializeField] private float minDistance = 10;
         [SerializeField] private float autoShootRadiusDetection = 15;
         [SerializeField] private GameObject bullet;
-
+        [SerializeField, Space, Header("Ult")]private float maxExplosionRadius = 15;
+        [SerializeField] private float propagationSpeed = 10;
+        [SerializeField] private float effectDuration = 2;
+        [SerializeField] private GameObject[] explosionEffects;
+ 
         private Rigidbody _rb;
         private Vector2 _moveInputAxis;
 
@@ -69,8 +75,28 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         private void Action()
         {
             print("FireSpecial");
+
+            StartCoroutine(ExplosionPropagation());
+            
+            foreach (var lEffect in explosionEffects)
+            {
+                Instantiate(lEffect, transform.position, transform.rotation);
+            }
         }
 
+        IEnumerator ExplosionPropagation()
+        {
+            float radius = 0f;
+            while (radius < maxExplosionRadius)
+            {
+                radius += propagationSpeed * Time.deltaTime;
+                Physics.OverlapSphere(transform.position, radius);
+                print(radius);
+                yield return null;
+            }
+            yield return new WaitForSeconds(effectDuration);
+        }
+        
         private void AutoShoot()
         {
             Vector3 lCenter = transform.position;
@@ -86,6 +112,8 @@ namespace JuiceIt2Content.Programming.Player.Scripts
                 {
                     float lDistance = (enemyColliders.gameObject.transform.position - transform.position).magnitude;
                     if (!(lDistance <= minDistance)) continue;
+                    
+                    transform.LookAt(enemyColliders.gameObject.transform.position);
                     
                     Quaternion lRotation = Quaternion.LookRotation(enemyColliders.gameObject.transform.forward * -1);
                     Instantiate(bullet, transform.position, lRotation);
