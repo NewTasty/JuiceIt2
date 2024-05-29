@@ -2133,6 +2133,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ab09e6b1937a494b9386d25ad026c40, type: 2}
   - {fileID: 11400000, guid: e3c434597ed2c584c901e438716cbe3a, type: 2}
   - {fileID: 11400000, guid: 1cc7278c6032ebc4bb7d989bc5dd2236, type: 2}
+  - {fileID: 11400000, guid: 2eca34740b15cfe429c61cf04944e3f5, type: 2}
   soundPrefab: {fileID: 8652609914386830566, guid: 2666af48fa22f1842b2b4a9c9f1ba661, type: 3}
 --- !u!4 &1642840617
 Transform:
