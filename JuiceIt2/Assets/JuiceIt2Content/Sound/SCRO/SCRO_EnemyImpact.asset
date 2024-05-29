@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SCRO_EnemyImpact
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: fe16d3d76e681ff4383e6ff3ab5cf1d2, type: 3}
-  minVolume: 1
-  maxVolume: 1
+  minVolume: 0.6
+  maxVolume: 0.8
   minPitch: 1
   maxPitch: 1
   panStereo: 0
