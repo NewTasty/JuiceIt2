@@ -57,7 +57,7 @@ namespace JuiceIt2Content.Programming.Collectable
             {
                 Instantiate(fxOnCollect, transform.position, transform.rotation);
             }
-            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(4);
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(4, this.transform);
             Destroy(gameObject);
         }
         

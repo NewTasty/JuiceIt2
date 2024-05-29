@@ -11,9 +11,18 @@ public class SoundManager : MonoBehaviour
     private AudioSource newSource;
     private CS_Sound newScriptable;
 
-    public void SoundInstantiate(int Sound)
+    public void SoundInstantiate(int Sound, Transform Miror)
     {
         newObject = GameObject.Instantiate(soundPrefab);
+
+        switch (Sound)
+        {
+            case 1:soundPrefab.transform.position = Miror.position; break;
+            case 2: soundPrefab.transform.position = Miror.position; break;
+            case 5: soundPrefab.transform.position = Miror.position; break;
+            default: soundPrefab.transform.position = Miror.position; break;
+        }
+
         newScriptable = soundList[Sound];
         newSource = newObject.GetComponent<AudioSource>();
         newSource.clip = newScriptable.audioClip;
