@@ -8,8 +8,8 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         [SerializeField] private float speed = 0.5f;
         [SerializeField] private float lifeSpan = 4;
         [SerializeField] private GameObject HitEffect;
-        [SerializeField] private Transform firstEffectAnchor;
-        [SerializeField] private Transform secondEffectAnchor;
+        private Transform firstEffectAnchor;
+        private Transform secondEffectAnchor;
         [SerializeField] private GameObject trailEffect;
         [SerializeField] private GameObject moveEffect;
 
@@ -44,7 +44,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
             {
                 if (HitEffect)
                 {
-                    Instantiate(HitEffect);
+                    Instantiate(HitEffect, transform.position, transform.rotation);
                 }
                 Destroy(gameObject);
             }else if (other.GetComponent<EnemyBasic>())
@@ -53,11 +53,11 @@ namespace JuiceIt2Content.Programming.Player.Scripts
             }
         }
 
-        void OnEnemyHitEffect(Collider other)
+        private void OnEnemyHitEffect(Collider other)
         {
             if (HitEffect)
             {
-                Instantiate(HitEffect);
+                Instantiate(HitEffect, transform.position, transform.rotation);
             }
             Destroy(other.gameObject);
             Destroy(gameObject);
