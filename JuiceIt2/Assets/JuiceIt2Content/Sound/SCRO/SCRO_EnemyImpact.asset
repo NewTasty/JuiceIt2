@@ -18,3 +18,4 @@ MonoBehaviour:
   minPitch: 1
   maxPitch: 1
   panStereo: 0
+  spatialBlend: 1

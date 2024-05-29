@@ -19,6 +19,8 @@ public class SoundManager : MonoBehaviour
         newSource.clip = newScriptable.audioClip;
         newSource.volume = Random.Range(newScriptable.minVolume, newScriptable.maxVolume);
         newSource.pitch = Random.Range(newScriptable.minPitch, newScriptable.maxPitch);
+        newSource.panStereo = newScriptable.panStereo;
+        newSource.spatialBlend = newScriptable.spatialBlend;
         newSource.Play();
         GameObject.Destroy(newObject, newSource.clip.length+1);
     }
