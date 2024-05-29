@@ -1,7 +1,7 @@
 using JuiceIt2Content.Programming.Enemy;
 using UnityEngine;
 
-namespace JuiceIt2Content.Programming.Player.Scripts
+namespace JuiceIt2Content.Programming.Bullet
 {
     public class Bullet : MonoBehaviour
     {
@@ -36,6 +36,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
             {
                 OnEnemyHitEffect(other);
             }
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(1);
         }
 
         private void OnEnemyHitEffect(Collider other)
@@ -45,7 +46,6 @@ namespace JuiceIt2Content.Programming.Player.Scripts
                 Instantiate(hitEffect, transform.position, transform.rotation);
             }
             other.GetComponent<EnemyBasic>().onDeath.Invoke();
-            Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SCRO_TirAuto
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 7e56a073ed9569642bc8e2d8cc10f6b0, type: 3}
-  minVolume: 1
-  maxVolume: 1
+  minVolume: 0.6
+  maxVolume: 0.8
   minPitch: 1
   maxPitch: 1
   panStereo: 0

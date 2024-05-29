@@ -26,6 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3941251597228157320}
   serializedVersion: 2
+<<<<<<<< HEAD:JuiceIt2/Assets/JuiceIt2Content/Assets/VFX/PS_EnemyTracks.prefab
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,6 +35,16 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &5532705607240354711
+========
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 270, y: 270, z: 0}
+--- !u!198 &4658236848806882418
+>>>>>>>> 8ba51d1 (updated xp vfx and enemy prefab):JuiceIt2/Assets/JuiceIt2Content/Assets/VFX/PS_XP.prefab
 ParticleSystem:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,9 +297,15 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
+<<<<<<<< HEAD:JuiceIt2/Assets/JuiceIt2Content/Assets/VFX/PS_EnemyTracks.prefab
       minMaxState: 3
       scalar: 0.75
       minScalar: 0.25
+========
+      minMaxState: 0
+      scalar: 0.5
+      minScalar: 1
+>>>>>>>> 8ba51d1 (updated xp vfx and enemy prefab):JuiceIt2/Assets/JuiceIt2Content/Assets/VFX/PS_XP.prefab
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3621,7 +3638,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3800,15 +3817,16 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
-    inside: 1
+    inside: 0
     outside: 0
-    enter: 0
+    enter: 1
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
-    primitives: []
+    primitives:
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 0
