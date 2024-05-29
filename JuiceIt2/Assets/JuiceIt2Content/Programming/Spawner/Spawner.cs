@@ -34,7 +34,8 @@ namespace JuiceIt2Content.Programming.Spawner
                     Random.Range(_box.bounds.min.z, _box.bounds.max.z));
                 
                 Instantiate(enemy, lRandomPosition, transform.rotation);
-                
+                GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(2);
+
                 _timer = 0;
             }
         }
