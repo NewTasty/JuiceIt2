@@ -1,3 +1,4 @@
+using System.Collections;
 using JuiceIt2Content.Programming.Enemy;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,8 +15,8 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         [SerializeField] private float autoShootRadiusDetection = 15;
         [SerializeField] private GameObject bullet;
         [SerializeField, Space, Header("Ult")]private float maxExplosionRadius = 15;
-        [SerializeField] private float propagationSpeed = 5;
         [SerializeField] private float effectDuration = 2;
+        [SerializeField] private float explosionDelay = 2;
         [SerializeField] private GameObject[] explosionEffects;
  
         private Rigidbody _rb;
@@ -50,11 +51,11 @@ namespace JuiceIt2Content.Programming.Player.Scripts
             _moveInputAxis = pContext.ReadValue<Vector2>();
         }
 
-        public void ActionInput(InputAction.CallbackContext pContext)
+        public void UltimateInput(InputAction.CallbackContext pContext)
         {
             if (pContext.performed)
             {
-                Action();
+                Ultimate();
             }
         }
 
@@ -72,14 +73,20 @@ namespace JuiceIt2Content.Programming.Player.Scripts
             _rb.linearVelocity = lNewVel;
         }
 
-        private void Action()
+        private void Ultimate()
         {
-            
+            StartCoroutine(ExplosionDelayCoroutine());
+        }
+
+        IEnumerator ExplosionDelayCoroutine()
+        {
             foreach (var lEffect in explosionEffects)
             {
                 Instantiate(lEffect, transform.position, transform.rotation);
                 _soundManager.SoundInstantiate(5);
             }
+            
+            yield return new WaitForSeconds(explosionDelay);
             
             Collider[] lEnnemies = Physics.OverlapSphere(transform.position, maxExplosionRadius);
                 

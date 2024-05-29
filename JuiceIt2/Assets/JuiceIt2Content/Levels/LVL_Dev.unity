@@ -2457,21 +2457,13 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 961739752}
-    - target: {fileID: 8977335590056442779, guid: a6d0bbc215840c943a3f384cf464de4c, type: 3}
-      propertyPath: explosionEffects.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977335590056442779, guid: a6d0bbc215840c943a3f384cf464de4c, type: 3}
-      propertyPath: 'explosionEffects.Array.data[1]'
-      value: 
-      objectReference: {fileID: 3123075737211501182, guid: a3f72d5f213bb7d458dfc2c4369e7acf, type: 3}
     - target: {fileID: 9050093776009290563, guid: a6d0bbc215840c943a3f384cf464de4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 9050093776009290563, guid: a6d0bbc215840c943a3f384cf464de4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.001
+      value: 1.114
       objectReference: {fileID: 0}
     - target: {fileID: 9050093776009290563, guid: a6d0bbc215840c943a3f384cf464de4c, type: 3}
       propertyPath: m_LocalPosition.z
