@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2703122783071590074}
   - component: {fileID: 26747690392398580}
   - component: {fileID: 5081691514996842350}
+  - component: {fileID: 3571548782995475837}
+  - component: {fileID: 1467488110650148579}
   m_Layer: 0
   m_Name: Collectable
   m_TagString: Untagged
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 8260289429319462762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.88, y: 0.71, z: 3.738088}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -47,7 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85cce702389edb54191c4f6c1e2de381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xpToGive: 10
+  _xpToGive: 10
+  speed: 10
   fxOnCollect: {fileID: 0}
   isAttractedEverywhere: 0
   attractedRadius: 5
@@ -58,7 +61,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8260289429319462762}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &26747690392398580
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -124,4 +127,52 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.689991
+  m_Center: {x: 0.189991, y: 0, z: 0}
+--- !u!54 &3571548782995475837
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8260289429319462762}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &1467488110650148579
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8260289429319462762}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
