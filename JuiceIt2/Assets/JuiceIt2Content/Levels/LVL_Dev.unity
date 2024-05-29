@@ -2031,7 +2031,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 796788b745bd31e4c8760633831c6f73, type: 3}
   m_Resource: {fileID: 8300000, guid: 796788b745bd31e4c8760633831c6f73, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2133,6 +2133,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ab09e6b1937a494b9386d25ad026c40, type: 2}
   - {fileID: 11400000, guid: e3c434597ed2c584c901e438716cbe3a, type: 2}
   - {fileID: 11400000, guid: 1cc7278c6032ebc4bb7d989bc5dd2236, type: 2}
+  - {fileID: 11400000, guid: 2eca34740b15cfe429c61cf04944e3f5, type: 2}
   soundPrefab: {fileID: 8652609914386830566, guid: 2666af48fa22f1842b2b4a9c9f1ba661, type: 3}
 --- !u!4 &1642840617
 Transform:
@@ -2323,14 +2324,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 961739752}
-    - target: {fileID: 8977335590056442779, guid: a6d0bbc215840c943a3f384cf464de4c, type: 3}
-      propertyPath: explosionEffects.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977335590056442779, guid: a6d0bbc215840c943a3f384cf464de4c, type: 3}
-      propertyPath: 'explosionEffects.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8057502814347332989, guid: b7122044b6a909e468995921166e5021, type: 3}
     - target: {fileID: 9050093776009290563, guid: a6d0bbc215840c943a3f384cf464de4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5

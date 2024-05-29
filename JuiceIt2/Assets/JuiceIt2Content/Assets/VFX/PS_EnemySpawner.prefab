@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7590713718848536127}
   - component: {fileID: 361430184326629106}
   m_Layer: 0
-  m_Name: FX_EnemySpawner
+  m_Name: PS_EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4904,7 +4904,7 @@ GameObject:
   - component: {fileID: 8478262551209651668}
   - component: {fileID: 7955167767463166215}
   m_Layer: 0
-  m_Name: FX_Cubes
+  m_Name: Cubes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

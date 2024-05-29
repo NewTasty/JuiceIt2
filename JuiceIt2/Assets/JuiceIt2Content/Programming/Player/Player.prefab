@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 346005593118909025}
   - component: {fileID: 2835525167436742030}
   - component: {fileID: 4183485731080647313}
+  - component: {fileID: 9052748871651046088}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -142,6 +143,11 @@ MonoBehaviour:
   minDistance: 10
   autoShootRadiusDetection: 10
   bullet: {fileID: 6092940822642138220, guid: 0af750f8d780fa64390f3c98297d0f13, type: 3}
+  maxExplosionRadius: 15
+  propagationSpeed: 5
+  effectDuration: 2
+  explosionEffects:
+  - {fileID: 2110054411802827156, guid: a48443c3d425f0f48b5961751598d529, type: 3}
 --- !u!65 &346005593118909025
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -254,6 +260,27 @@ MonoBehaviour:
   m_DefaultActionMap: Game
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!135 &9052748871651046088
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833893621562175847}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.03
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2448738248357756232
 PrefabInstance:
   m_ObjectHideFlags: 0

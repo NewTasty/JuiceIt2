@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865c92c666eb9ca49ab8b1d928fe5dcf, type: 3}
   m_Name: SCRO_PlayerImpact
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: fe16d3d76e681ff4383e6ff3ab5cf1d2, type: 3}
   minVolume: 1
   maxVolume: 1
   minPitch: 1
