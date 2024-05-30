@@ -1,4 +1,5 @@
 
+using System;
 using JuiceIt2Content.Programming.Framework;
 using JuiceIt2Content.Programming.Player.Scripts;
 using UnityEngine;
@@ -12,19 +13,26 @@ namespace JuiceIt2Content.Programming.Collectable
         [SerializeField] private GameObject fxOnCollect;
         [SerializeField] private bool isAttractedEverywhere; 
         [SerializeField] private float attractedRadius = 10; 
+        [SerializeField] private Vector2 scaleRangeValue = new Vector2(0.2f, 0.5f); 
 
         private Transform _playerRef;
         private float _speed = 10;
+        private Rigidbody _rb;
 
         private void Awake()
         {
-            float lRandomScale = Random.Range(0.2f, 0.7f);
+            float lRandomScale = Random.Range(scaleRangeValue.x, scaleRangeValue.y);
             transform.localScale = new Vector3(lRandomScale, lRandomScale, lRandomScale);
+
+            _rb = GetComponent<Rigidbody>();
         }
 
         private void Start()
         {
             _playerRef = FindFirstObjectByType<PlayerEngine>().transform;
+
+            Vector2 lRandomUnitVector = Random.insideUnitCircle / 0.5f; 
+            _rb.AddExplosionForce(800, transform.position - new Vector3(scaleRangeValue.x, -1, scaleRangeValue.y),10);
         }
 
         private void Update()
@@ -71,5 +79,12 @@ namespace JuiceIt2Content.Programming.Collectable
             
             transform.LookAt(_playerRef.position);
         }
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position, attractedRadius);
+        }
+#endif
     }
 }
