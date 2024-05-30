@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865c92c666eb9ca49ab8b1d928fe5dcf, type: 3}
   m_Name: SCRO_EnemySpawn
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 519ef02e44547d54898a17020bb0c170, type: 3}
-  minVolume: 1
-  maxVolume: 1
+  audioClip: {fileID: 8300000, guid: 2543dc05cb1886f4dafbd029c0fa7857, type: 3}
+  minVolume: 0.7
+  maxVolume: 0.8
   minPitch: 1
   maxPitch: 1
   panStereo: 0
