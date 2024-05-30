@@ -52,8 +52,8 @@ MonoBehaviour:
   xpToGive: 10
   fxOnCollect: {fileID: 8853250805162873875, guid: c2d222550262a454bb96011816d23656, type: 3}
   isAttractedEverywhere: 0
-  attractedRadius: 5
-  scaleRangeValue: {x: 0.2, y: 0.7}
+  attractedRadius: 12
+  scaleRangeValue: {x: 0.2, y: 0.5}
 --- !u!33 &2703122783071590074
 MeshFilter:
   m_ObjectHideFlags: 0

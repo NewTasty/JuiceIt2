@@ -54,13 +54,12 @@ MonoBehaviour:
   _moveSpeed: 500
   _acceleration: 0.3
   _deceleration: 0.3
-  _maxLife: 500
-  _bulletSpawnTime: 0.3
+  _maxLife: 600
+  _bulletSpawnTime: 0.2
   _minDistance: 10
   _autoShootRadiusDetection: 15
   _bullet: {fileID: 6092940822642138220, guid: 0af750f8d780fa64390f3c98297d0f13, type: 3}
   _maxExplosionRadius: 15
-  _effectDuration: 2
   _explosionDelay: 1
   _explosionEffects:
   - {fileID: 2110054411802827156, guid: a48443c3d425f0f48b5961751598d529, type: 3}
