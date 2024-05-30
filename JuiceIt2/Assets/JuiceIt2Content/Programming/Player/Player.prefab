@@ -51,17 +51,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597a93c04afe89049ab7f97dc8019802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 400
-  acceleration: 0.3
-  deceleration: 0.5
-  bulletSpawnTime: 0.33
-  minDistance: 10
-  autoShootRadiusDetection: 10
-  bullet: {fileID: 6092940822642138220, guid: 0af750f8d780fa64390f3c98297d0f13, type: 3}
-  maxExplosionRadius: 15
-  effectDuration: 2
-  explosionDelay: 1
-  explosionEffects:
+  _moveSpeed: 500
+  _acceleration: 0.3
+  _deceleration: 0.3
+  _maxLife: 100
+  _bulletSpawnTime: 1
+  _minDistance: 10
+  _autoShootRadiusDetection: 15
+  _bullet: {fileID: 6092940822642138220, guid: 0af750f8d780fa64390f3c98297d0f13, type: 3}
+  _maxExplosionRadius: 15
+  _effectDuration: 2
+  _explosionDelay: 1
+  _explosionEffects:
   - {fileID: 2110054411802827156, guid: a48443c3d425f0f48b5961751598d529, type: 3}
   - {fileID: 3123075737211501182, guid: a3f72d5f213bb7d458dfc2c4369e7acf, type: 3}
 --- !u!65 &346005593118909025
@@ -5929,7 +5930,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1666
+  m_VersionIndex: 1675
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6576,7 +6577,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1801
+  m_VersionIndex: 1810
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -8849,7 +8850,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 697
+  m_VersionIndex: 706
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

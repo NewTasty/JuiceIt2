@@ -9,6 +9,7 @@ namespace JuiceIt2Content.Programming.Framework
         private void Awake()
         {
             SoundManager = FindFirstObjectByType<SoundManager>();
+            print(SoundManager);
         }
     }
 }

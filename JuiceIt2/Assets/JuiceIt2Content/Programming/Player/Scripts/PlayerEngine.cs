@@ -3,23 +3,28 @@ using JuiceIt2Content.Programming.Enemy;
 using JuiceIt2Content.Programming.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace JuiceIt2Content.Programming.Player.Scripts
 {
     public class PlayerEngine : MonoBehaviour
     {
-        [SerializeField, Header("Movement")] private int moveSpeed = 500;
-        [SerializeField] private float acceleration = 0.3f;
-        [SerializeField] private float deceleration = 0.3f;
-        [SerializeField, Space, Header("AutoShoot")] private float bulletSpawnTime = 1;
-        [SerializeField] private float minDistance = 10;
-        [SerializeField] private float autoShootRadiusDetection = 15;
-        [SerializeField] private GameObject bullet;
-        [SerializeField, Space, Header("Ult")]private float maxExplosionRadius = 15;
-        [SerializeField] private float effectDuration = 2;
-        [SerializeField] private float explosionDelay = 2;
-        [SerializeField] private GameObject[] explosionEffects;
- 
+        [SerializeField, Header("Movement")] private int _moveSpeed = 500;
+        [SerializeField] private float _acceleration = 0.3f;
+        [SerializeField] private float _deceleration = 0.3f;
+        [SerializeField, Space, Header("Stats")] private int _maxLife;
+        [SerializeField, Space, Header("AutoShoot")] private float _bulletSpawnTime = 1;
+        [SerializeField] private float _minDistance = 10;
+        [SerializeField] private float _autoShootRadiusDetection = 15;
+        [SerializeField] private GameObject _bullet;
+        [SerializeField, Space, Header("Ult")]private float _maxExplosionRadius = 15;
+        [SerializeField] private float _effectDuration = 2;
+        [SerializeField] private float _explosionDelay = 2;
+        [SerializeField] private GameObject[] _explosionEffects;
+
+        private int _lifePoint;
+        
+        
         private Rigidbody _rb;
         private Vector2 _moveInputAxis;
         
@@ -63,11 +68,11 @@ namespace JuiceIt2Content.Programming.Player.Scripts
 
         private void MoveAction()
         {
-            Vector2 lAxisSpeed = _moveInputAxis * (moveSpeed * Time.fixedDeltaTime);
+            Vector2 lAxisSpeed = _moveInputAxis * (_moveSpeed * Time.fixedDeltaTime);
             Vector3 lAxis = new Vector3(lAxisSpeed.x, _rb.linearVelocity.y, lAxisSpeed.y);
 
-            Vector3 lNewVel = lAxis.magnitude != 0 ? Vector3.Lerp(_rb.linearVelocity,  lAxis, acceleration) : 
-                                                    Vector3.Lerp(_rb.linearVelocity,  Vector3.zero, deceleration);
+            Vector3 lNewVel = lAxis.magnitude != 0 ? Vector3.Lerp(_rb.linearVelocity,  lAxis, _acceleration) : 
+                                                    Vector3.Lerp(_rb.linearVelocity,  Vector3.zero, _deceleration);
             _rb.linearVelocity = lNewVel;
         }
 
@@ -79,15 +84,15 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         // ReSharper disable Unity.PerformanceAnalysis
         IEnumerator ExplosionDelayCoroutine()
         {
-            foreach (var lEffect in explosionEffects)
+            foreach (var lEffect in _explosionEffects)
             {
                 Instantiate(lEffect, transform.position, transform.rotation);
                 GameMode.SoundManager.SoundInstantiate(5, lEffect.transform);
             }
             
-            yield return new WaitForSeconds(explosionDelay);
+            yield return new WaitForSeconds(_explosionDelay);
             
-            Collider[] lEnnemies = Physics.OverlapSphere(transform.position, maxExplosionRadius);
+            Collider[] lEnnemies = Physics.OverlapSphere(transform.position, _maxExplosionRadius);
                 
             foreach (var lEnnemyEntity in lEnnemies)
             {
@@ -101,9 +106,9 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         private void AutoShoot()
         {
             Vector3 lCenter = transform.position;
-            Collider[] lListOfEnnemy = Physics.OverlapSphere(lCenter, autoShootRadiusDetection, LayerMask.GetMask("Enemies"));
+            Collider[] lListOfEnnemy = Physics.OverlapSphere(lCenter, _autoShootRadiusDetection, LayerMask.GetMask("Enemies"));
             
-            if (_autoShootTimer <= bulletSpawnTime)
+            if (_autoShootTimer <= _bulletSpawnTime)
             {
                 _autoShootTimer += Time.deltaTime;
             }
@@ -112,12 +117,12 @@ namespace JuiceIt2Content.Programming.Player.Scripts
                 foreach (var enemyColliders in lListOfEnnemy)
                 {
                     float lDistance = (enemyColliders.gameObject.transform.position - transform.position).magnitude;
-                    if (!(lDistance <= minDistance)) continue;
+                    if (!(lDistance <= _minDistance)) continue;
                     
                     transform.LookAt(enemyColliders.gameObject.transform.position);
                     
                     Quaternion lRotation = Quaternion.LookRotation(enemyColliders.gameObject.transform.forward * -1);
-                    Instantiate(bullet, transform.position, lRotation);
+                    Instantiate(_bullet, transform.position, lRotation);
                     break;
                 }
                 _autoShootTimer = 0;
@@ -138,12 +143,31 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         }
 
         #endregion
+
+        #region LIFE
+
+        public int GetLife()
+        {
+            return _lifePoint;
+        }
+
+        public int GetMaxLife()
+        {
+            return _maxLife;
+        }
+        
+        public void TakeDamage(int pDamage)
+        {
+            int newLife = Mathf.Clamp(_lifePoint, 0, _maxLife);
+            _lifePoint -= newLife - pDamage;
+        }
+        #endregion
         
         
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
-            Gizmos.DrawWireSphere(transform.position, autoShootRadiusDetection);
+            Gizmos.DrawWireSphere(transform.position, _autoShootRadiusDetection);
         }
 #endif
     }

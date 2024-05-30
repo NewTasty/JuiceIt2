@@ -170,7 +170,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1489864821897531953}
         m_TargetAssemblyTypeName: JuiceIt2Content.Programming.Enemy.EnemyBasic, Assembly-CSharp
-        m_MethodName: SpawnCollectable
+        m_MethodName: EnemyDeath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

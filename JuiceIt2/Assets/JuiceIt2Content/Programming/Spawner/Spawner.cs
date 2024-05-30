@@ -22,6 +22,7 @@ namespace JuiceIt2Content.Programming.Spawner
             SpawnEnemy();
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private void SpawnEnemy()
         {
             if (_timer <= spawnBySec)
