@@ -807,6 +807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 6397589598564772328, guid: e6b29156329679a49a141a4cd7a3eaf5, type: 3}
+      propertyPath: m_text
+      value: Juicy Survivor
+      objectReference: {fileID: 0}
     - target: {fileID: 6522422069205871614, guid: e6b29156329679a49a141a4cd7a3eaf5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.8334224
@@ -828,6 +832,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 961739752}
     - target: {fileID: 8112946074016268712, guid: e6b29156329679a49a141a4cd7a3eaf5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 595.673
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112946074016268712, guid: e6b29156329679a49a141a4cd7a3eaf5, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.2551
       objectReference: {fileID: 0}
@@ -841,11 +849,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8112946074016268712, guid: e6b29156329679a49a141a4cd7a3eaf5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000023229
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8112946074016268712, guid: e6b29156329679a49a141a4cd7a3eaf5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 376
+      value: 379
       objectReference: {fileID: 0}
     - target: {fileID: 9115301647818257115, guid: e6b29156329679a49a141a4cd7a3eaf5, type: 3}
       propertyPath: m_Pivot.x
