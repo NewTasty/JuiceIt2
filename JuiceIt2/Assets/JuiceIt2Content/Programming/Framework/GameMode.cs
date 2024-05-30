@@ -24,6 +24,7 @@ namespace JuiceIt2Content.Programming.Framework
         private void Start()
         {
             _victoryCondition = false;
+            GameMode.SoundManager.GetComponent<AudioSource>().volume = 0.25f;
         }
 
         private void Update()
@@ -37,6 +38,7 @@ namespace JuiceIt2Content.Programming.Framework
             {
                 Instantiate(looseScreenRef);
                 _looseScreen = true;
+                GameMode.SoundManager.GetComponent<AudioSource>().volume = 0.10f;
             }
         }
     }
