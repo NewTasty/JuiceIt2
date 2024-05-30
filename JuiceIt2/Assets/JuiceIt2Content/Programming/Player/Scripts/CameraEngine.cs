@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 namespace JuiceIt2Content.Programming.Player.Scripts
@@ -9,10 +10,13 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         
         private Transform _playerRef;
         private Vector3 _velocity;
+
+        public static CinemachineBasicMultiChannelPerlin CameraShake;
         
         private void Start()
         {
             _playerRef = FindFirstObjectByType<PlayerEngine>().transform;
+            CameraShake = GetComponent<CinemachineBasicMultiChannelPerlin>();
         }
 
         private void FixedUpdate()
@@ -24,6 +28,11 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         {
             Vector3 lNewPosition = new Vector3(_playerRef.position.x + offset.x, offset.y, _playerRef.position.z  + offset.z);
             transform.position = Vector3.SmoothDamp(transform.position, lNewPosition, ref _velocity, timeLerpSpeed);
+        }
+
+        public static void SetShake(bool pActivation)
+        {
+            CameraShake.enabled = pActivation;
         }
 
 #if UNITY_EDITOR
