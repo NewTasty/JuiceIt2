@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: SCRO_Resource
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 67cc8a52f33a63743b6adc98a0719e55, type: 3}
-  minVolume: 1
-  maxVolume: 1
+  minVolume: 0.6
+  maxVolume: 0.6
   minPitch: 1
   maxPitch: 1
   panStereo: 0
+  spatialBlend: 0
