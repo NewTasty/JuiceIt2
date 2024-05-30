@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpToGive: 10
-  fxOnCollect: {fileID: 5046674492588000954, guid: 9cdd2ba6ab369cd49b953d6b2bac06d2, type: 3}
+  fxOnCollect: {fileID: 8853250805162873875, guid: c2d222550262a454bb96011816d23656, type: 3}
   isAttractedEverywhere: 0
   attractedRadius: 5
   scaleRangeValue: {x: 0.2, y: 0.7}
