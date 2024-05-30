@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3579591042836797848}
   - component: {fileID: 5858428235924540102}
   m_Layer: 0
-  m_Name: PS_Splat
+  m_Name: PS_Splat05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.0477102, y: 2.09, z: 1.18}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4838,7 +4838,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cb4a23246dbf37949a469adb388ac502, type: 2}
+  - {fileID: 2100000, guid: 21343f260bb33784b86dd33ea1cb00b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
