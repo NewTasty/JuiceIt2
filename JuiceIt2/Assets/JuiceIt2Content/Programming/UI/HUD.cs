@@ -19,7 +19,7 @@ namespace JuiceIt2Content.Programming.UI
         private void Start()
         {
             _playerRef = FindFirstObjectByType<PlayerEngine>();
-            
+
             if (!_playerRef) return;
             lifeBar.maxValue = _playerRef.GetMaxLife();
         }
