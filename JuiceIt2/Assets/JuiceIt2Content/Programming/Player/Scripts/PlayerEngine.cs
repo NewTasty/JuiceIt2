@@ -92,8 +92,8 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         {
             foreach (var lEffect in _explosionEffects)
             {
-                Instantiate(lEffect, transform.position, transform.rotation);
-                GameMode.SoundManager.SoundInstantiate(5, lEffect.transform);
+                var effect = Instantiate(lEffect, transform.position, transform.rotation);
+                GameMode.SoundManager.SoundInstantiate(5, effect.transform);
             }
             
             yield return new WaitForSeconds(_explosionDelay);
