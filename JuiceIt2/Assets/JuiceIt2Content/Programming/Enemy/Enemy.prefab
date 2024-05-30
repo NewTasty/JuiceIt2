@@ -5055,6 +5055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  damage: 3
   rewardNumber: {x: 1, y: 5}
   rewardObject: {fileID: 8260289429319462762, guid: c5a5b0eadb8f26643a91975d12a119cf, type: 3}
   deathFX: {fileID: 573310264052072629, guid: 73c5db28487907e43961154bd85e00cb, type: 3}

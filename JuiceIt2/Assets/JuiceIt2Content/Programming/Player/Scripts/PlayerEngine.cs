@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using JuiceIt2Content.Programming.Enemy;
 using JuiceIt2Content.Programming.Framework;
@@ -24,7 +25,6 @@ namespace JuiceIt2Content.Programming.Player.Scripts
 
         private int _lifePoint;
         
-        
         private Rigidbody _rb;
         private Vector2 _moveInputAxis;
         
@@ -35,6 +35,12 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
+        }
+
+        private void Start()
+        {
+            
+            _lifePoint = GetMaxLife();
         }
 
         private void FixedUpdate()
@@ -159,7 +165,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         public void TakeDamage(int pDamage)
         {
             int newLife = Mathf.Clamp(_lifePoint, 0, _maxLife);
-            _lifePoint -= newLife - pDamage;
+            _lifePoint = newLife - pDamage;
         }
         #endregion
         
