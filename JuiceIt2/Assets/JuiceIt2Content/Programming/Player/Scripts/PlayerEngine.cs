@@ -18,7 +18,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         [SerializeField] private GameObject _bullet;
         [SerializeField, Space, Header("Ult")]private float _maxExplosionRadius = 15;
         [SerializeField] private float _explosionDelay = 2;
-        [SerializeField] private float _explosionCooldown = 2;
+        [SerializeField] public float _explosionCooldown = 2;
         [SerializeField] private GameObject[] _explosionEffects;
 
         private int _lifePoint;
@@ -27,7 +27,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         private Vector2 _moveInputAxis;
         
         private float _autoShootTimer;
-        private float _ultTimer;
+        public float _ultTimer;
         private bool _ultAction;
         
         private static float Score {get; set;}

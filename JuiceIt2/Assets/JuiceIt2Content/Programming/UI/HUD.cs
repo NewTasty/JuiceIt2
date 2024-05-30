@@ -11,6 +11,7 @@ namespace JuiceIt2Content.Programming.UI
         [SerializeField] private TextMeshProUGUI scorePoint;
         [SerializeField] private TextMeshProUGUI timeCount;
         [SerializeField] private Slider lifeBar;
+        [SerializeField] private Slider ultBar;
 
         private PlayerEngine _playerRef;
 
@@ -22,12 +23,15 @@ namespace JuiceIt2Content.Programming.UI
 
             if (!_playerRef) return;
             lifeBar.maxValue = _playerRef.GetMaxLife();
+            ultBar.maxValue = _playerRef._explosionCooldown;
         }
 
         private void Update()
         {
             _time += Time.deltaTime;
             timeCount.SetText(Mathf.Round(_time).ToString(CultureInfo.InvariantCulture) + " sec");
+
+            ultBar.value = _playerRef._ultTimer / _playerRef._explosionCooldown;
             
             if (!_playerRef) return;
             scorePoint.SetText(_playerRef.GetScore().ToString(CultureInfo.CurrentCulture));
