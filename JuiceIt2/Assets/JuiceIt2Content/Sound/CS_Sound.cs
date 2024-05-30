@@ -13,4 +13,5 @@ public class CS_Sound : ScriptableObject
     [Range(-3f, 3f)] public float minPitch;
     [Range(-3f, 3f)] public float maxPitch;
     [Range(-1f, 1f)] public float panStereo;
+    [Range(0f, 1f)] public float spatialBlend;
 }
