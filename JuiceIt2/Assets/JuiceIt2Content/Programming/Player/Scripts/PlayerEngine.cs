@@ -1,5 +1,6 @@
 using System.Collections;
 using JuiceIt2Content.Programming.Enemy;
+using JuiceIt2Content.Programming.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,8 +22,6 @@ namespace JuiceIt2Content.Programming.Player.Scripts
  
         private Rigidbody _rb;
         private Vector2 _moveInputAxis;
-
-        private SoundManager _soundManager;
         
         private float _autoShootTimer;
         
@@ -31,7 +30,6 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
-            _soundManager = FindFirstObjectByType<SoundManager>();
         }
 
         private void FixedUpdate()
@@ -78,12 +76,13 @@ namespace JuiceIt2Content.Programming.Player.Scripts
             StartCoroutine(ExplosionDelayCoroutine());
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         IEnumerator ExplosionDelayCoroutine()
         {
             foreach (var lEffect in explosionEffects)
             {
                 Instantiate(lEffect, transform.position, transform.rotation);
-                _soundManager.SoundInstantiate(5, lEffect.transform);
+                GameMode.SoundManager.SoundInstantiate(5, lEffect.transform);
             }
             
             yield return new WaitForSeconds(explosionDelay);
