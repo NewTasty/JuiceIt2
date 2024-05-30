@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using JuiceIt2Content.Programming.Enemy;
 using JuiceIt2Content.Programming.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace JuiceIt2Content.Programming.Player.Scripts
 {
@@ -19,7 +17,6 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         [SerializeField] private float _autoShootRadiusDetection = 15;
         [SerializeField] private GameObject _bullet;
         [SerializeField, Space, Header("Ult")]private float _maxExplosionRadius = 15;
-        [SerializeField] private float _effectDuration = 2;
         [SerializeField] private float _explosionDelay = 2;
         [SerializeField] private GameObject[] _explosionEffects;
 

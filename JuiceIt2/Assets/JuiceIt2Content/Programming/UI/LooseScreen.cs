@@ -13,14 +13,20 @@ namespace JuiceIt2Content.Programming.UI
         
         private PlayerEngine _playerRef;
 
+        private void Awake()
+        {
+            _playerRef = FindFirstObjectByType<PlayerEngine>();
+            points.SetText(_playerRef.GetScore().ToString(CultureInfo.InvariantCulture));
+        }
+
         private void Start()
         {
             Time.timeScale = 0;
-            points.SetText(_playerRef.GetScore().ToString(CultureInfo.InvariantCulture));
         }
 
         public void Retry()
         {
+            Time.timeScale = 0;
             SceneManager.LoadScene("LVL_Dev");
         }
 
