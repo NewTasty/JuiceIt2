@@ -18,6 +18,7 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         [SerializeField] private GameObject _bullet;
         [SerializeField, Space, Header("Ult")]private float _maxExplosionRadius = 15;
         [SerializeField] private float _explosionDelay = 2;
+        [SerializeField] private float _explosionCooldown = 2;
         [SerializeField] private GameObject[] _explosionEffects;
 
         private int _lifePoint;
@@ -26,6 +27,8 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         private Vector2 _moveInputAxis;
         
         private float _autoShootTimer;
+        private float _ultTimer;
+        private bool _ultAction;
         
         private static float Score {get; set;}
 
@@ -36,8 +39,8 @@ namespace JuiceIt2Content.Programming.Player.Scripts
 
         private void Start()
         {
-            
             _lifePoint = GetMaxLife();
+            Score = 0;
         }
 
         private void FixedUpdate()
@@ -48,6 +51,18 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         private void Update()
         {
             AutoShoot();
+            if (!_ultAction) return;
+            
+            if (_ultTimer < _explosionCooldown)
+            {
+                _ultTimer += Time.deltaTime;
+            }
+            else
+            {
+                _ultTimer = 0;
+                _ultAction = false;
+            }
+
         }
 
         #region INPUTS
@@ -59,12 +74,13 @@ namespace JuiceIt2Content.Programming.Player.Scripts
 
         public void UltimateInput(InputAction.CallbackContext pContext)
         {
-            if (pContext.performed)
+            if (pContext.performed && !_ultAction)
             {
+                _ultAction = true;
                 Ultimate();
             }
         }
-
+        
         #endregion
         
         #region ACTIONS
@@ -87,6 +103,8 @@ namespace JuiceIt2Content.Programming.Player.Scripts
         // ReSharper disable Unity.PerformanceAnalysis
         IEnumerator ExplosionDelayCoroutine()
         {
+            StartCoroutine(StartShake());
+            
             foreach (var lEffect in _explosionEffects)
             {
                 var effect = Instantiate(lEffect, transform.position, transform.rotation);
@@ -104,6 +122,15 @@ namespace JuiceIt2Content.Programming.Player.Scripts
                     lEnnemyEntity.gameObject.GetComponent<EnemyBasic>().onDeath.Invoke();
                 }
             }
+        }
+
+        private IEnumerator StartShake()
+        {
+            yield return new WaitForSeconds(1f);
+            CameraEngine.SetShake(true);
+            yield return new WaitForSeconds(0.7f);
+            CameraEngine.SetShake(false);
+            yield return this;
         }
         
         private void AutoShoot()
