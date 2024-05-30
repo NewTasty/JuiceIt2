@@ -31,6 +31,6 @@ public class SoundManager : MonoBehaviour
         newSource.panStereo = newScriptable.panStereo;
         newSource.spatialBlend = newScriptable.spatialBlend;
         newSource.Play();
-        GameObject.Destroy(newObject, newSource.clip.length+1);
+        Destroy(newObject, newSource.clip.length+1);
     }
 }

@@ -1,4 +1,6 @@
+using System;
 using JuiceIt2Content.Programming.Enemy;
+using JuiceIt2Content.Programming.Framework;
 using UnityEngine;
 
 namespace JuiceIt2Content.Programming.Bullet
@@ -15,7 +17,11 @@ namespace JuiceIt2Content.Programming.Bullet
         {
             Destroy(gameObject, lifeSpan);
             _rb = GetComponent<Rigidbody>();
-            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(0, this.transform);
+        }
+
+        private void Start()
+        {
+            GameMode.SoundManager.SoundInstantiate(0, this.transform);
         }
 
         private void FixedUpdate()
@@ -36,7 +42,7 @@ namespace JuiceIt2Content.Programming.Bullet
             {
                 OnEnemyHitEffect(other);
             }
-            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(1, this.transform);
+            GameMode.SoundManager.SoundInstantiate(1, this.transform);
         }
 
         private void OnEnemyHitEffect(Collider other)

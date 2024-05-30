@@ -1,3 +1,4 @@
+using JuiceIt2Content.Programming.Framework;
 using UnityEngine;
 namespace JuiceIt2Content.Programming.Spawner
 {
@@ -34,7 +35,7 @@ namespace JuiceIt2Content.Programming.Spawner
                     Random.Range(_box.bounds.min.z, _box.bounds.max.z));
                 
                 Instantiate(enemy, lRandomPosition, transform.rotation);
-                GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(2, this.transform);
+                GameMode.SoundManager.SoundInstantiate(2, this.transform);
 
                 _timer = 0;
             }

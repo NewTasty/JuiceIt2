@@ -1,4 +1,5 @@
 
+using JuiceIt2Content.Programming.Framework;
 using JuiceIt2Content.Programming.Player.Scripts;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -57,7 +58,7 @@ namespace JuiceIt2Content.Programming.Collectable
             {
                 Instantiate(fxOnCollect, transform.position, transform.rotation);
             }
-            GameObject.Find("SoundManager").GetComponent<SoundManager>().SoundInstantiate(4, this.transform);
+            GameMode.SoundManager.SoundInstantiate(4, this.transform);
             Destroy(gameObject);
         }
         
